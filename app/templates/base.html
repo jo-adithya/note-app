@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  {% block head %}{% endblock head %}
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="dropbtn"><img src="../static/images/menu.png">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <option disabled>Folders</option>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn"><img src="../static/images/plus.png">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">New notes</a>
+        <a href="#">New folder</a>
+      </div>
+    </div>
+    <a href="#"><img src="../static/images/search.png"></a>
+  </div>
+
+  {% block body %}{% endblock body %}
+</body>
+
+</html>
