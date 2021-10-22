@@ -1,1 +1,4 @@
 flask
+python-dotenv
+Flask-Login
+Flask-SQLAlchemy
