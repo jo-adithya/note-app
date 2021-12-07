@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="testindex.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,11 @@
         <span class="tooltip">Files</span>
       </li>
       <li>
-        <a href="#" id="create">
+        <a href="#">
           <i class='bx bx-plus bx-sm'></i>
-          <span class="links_name">Create</span>
+          <span class="links_name">Dashboard</span>
         </a>
-         <span class="tooltip">Create</span>
+         <span class="tooltip">Dashboard</span>
       </li>
       <li>
        <a href="#" class="user">
@@ -40,7 +40,7 @@
      </li>
      <li class="profile">
          <div class="profile-details">
-           <img src="../static/images/avatar.svg" alt="profileImg">
+           <img src="avatar.svg" alt="profileImg">
            <div class="name_job">
              <div class="name">Jonathan/Axel</div>
              <div class="job">Students</div>
@@ -60,7 +60,6 @@
   let sideFile = document.querySelector(".file-manager");
   let closeBtn = document.querySelector("#btn");
   let file = document.querySelector("#file");
-  let create = document.querySelector("#create");
 
   closeBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("open");
@@ -71,17 +70,6 @@
   });
 
   file.addEventListener("click", ()=>{
-    if(!sidebar.classList.contains("open")){
-      sidebar.classList.toggle("open");
-      sideFile.classList.toggle("open");
-    }
-    else{
-      sideFile.classList.toggle("open");
-    }
-    menuBtnChange();//calling the function(optional)
-  });
-
-  create.addEventListener("click", ()=>{
     if(!sidebar.classList.contains("open")){
       sidebar.classList.toggle("open");
       sideFile.classList.toggle("open");
