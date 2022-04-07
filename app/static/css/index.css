@@ -239,7 +239,8 @@
   color: #11101d;
   font-size: 25px;
   font-weight: 500;
-  margin: 18px
+  margin: 18px;
+  width: 90%;
 }
 @media (max-width: 420px) {
   .sidebar li .tooltip{
@@ -271,5 +272,69 @@
   z-index: 2;
   transition: all 0.6s ease;
   opacity: 1;
+}
+
+hr{
+  width: 105%;
+  margin: auto;
+}
+
+.searchbar{
+  width: 80%;
+  background-color: #eff1f5;
+  margin: auto;
+  border-radius: 50px;
+  text-align: center;
+  height: 40px;
+  padding: 10px 10px;
+}
+
+.searchbar .input{
+  border: none;
+  background-color: transparent;
+  outline: none;
+  position: absolute;
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.container
+{
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.container .card
+{
+  background-color: #eff1f5;
+  height: 300px;
+  width : 220px;
+  border-radius: 20px;
+  margin : 10px 10px;
+  padding : 15px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.container .card:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+.container .card .datetime{
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.container .card .title
+{
+  font-size: 20px;
+  overflow: hidden;
+}
+.container .card .content
+{
+  font-size: 13px;
 }
 

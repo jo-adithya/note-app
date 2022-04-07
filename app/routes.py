@@ -2,9 +2,9 @@ from flask import render_template
 from app import app
 from .forms import LoginForm
 
-@app.route('/index')
+@app.route('/forget')
 def index():
-    return render_template('index.html')
+    return render_template('forgot.html')
 
 @app.route('/login')
 def login():
@@ -19,4 +19,4 @@ def register():
 @app.route('/')
 def forgot():
     form = LoginForm()
-    return render_template('forgot.html', form=form)
+    return render_template('index.html', form=form)
