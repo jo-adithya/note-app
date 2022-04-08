@@ -1,22 +1,23 @@
-from flask import render_template
+from flask import render_template, redirect
 from app import app
 from .forms import LoginForm
 
 @app.route('/forget')
-def index():
-    return render_template('forgot.html')
+def forget():
+    return render_template('forgot.html', title='Forgot Password')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    return render_template('login.html', form=form)
+    if (form.validate_on_submit()):
+        return redirect('/')
+    return render_template('login.html', title='Login', form=form)
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = LoginForm()
-    return render_template('register.html', form=form)
+    return render_template('register.html', title='Register', form=form)
 
 @app.route('/')
-def forgot():
-    form = LoginForm()
-    return render_template('index.html', form=form)
+def index():
+    return render_template('index.html', title='Notes')

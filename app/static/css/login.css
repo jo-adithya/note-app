@@ -1,116 +1,15 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 18px;
-  --main-color: #536DFE;
-  --secondary-color: #3E53C7;
-  --grey: #444;
-  --light-grey: #ccc;
-}
-
 .body {
-  height: calc(100vh - 51px);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow: hidden;
-}
-
-.main {
-  background-color: #ebd7d7;
-  width: 400px;
-  height: 400px;
-  margin: 200px auto;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.sign {
-  padding-top: 40px;
-  color: #8c55aa;
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-}
-
-.un {
-  width: 76%;
-  color: rgb(38, 50, 56);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 1px;
-  background: rgba(136, 126, 126, 0.04);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
-  margin-bottom: 50px;
-  margin-left: 46px;
-  text-align: center;
-  margin-bottom: 27px;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-/* form.form1 {
-  padding-top: 20px;
-} */
-
-.pass {
-  width: 76%;
-  color: rgb(38, 50, 56);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 1px;
-  background: rgba(136, 126, 126, 0.04);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
-  margin-bottom: 50px;
-  margin-left: 46px;
-  text-align: center;
-  margin-bottom: 27px;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.un:focus,
-.pass:focus {
-  border: 2px solid rgba(0, 0, 0, 0.18) !important;
-}
-
-.text-input {
-  font-size: 18px;
-}
-
-/* .submit {
-  cursor: pointer;
-  border-radius: 5em;
-  color: #fff;
-  background: linear-gradient(to right, #9c27b0, #e040fb);
-  border: 0;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
-  margin-left: 35%;
-  font-size: 13px;
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-} */
-
-.forgot {
-  color: #000000;
-  padding-top: 15px;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
 }
 
 a {
   color: #8fa5ec;
   text-decoration: none;
 }
-
 .container-login {
   width: 1000px;
   height: 530px;
@@ -119,41 +18,14 @@ a {
   border-radius: 20px;
   overflow: auto;
   transition: 0.3s;
-  background-color: #fff;
-  position:relative;
 }
 
-.login-img{
+.container-login > img {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   border-radius: 20px;
   width: 550px;
   height: 500px;
-}
-
-.forgot-wave-top{
-  position:absolute;
-  z-index: 1;
-  top: 0;
-  filter: brightness(80%);
-  transform: scalex(-1);
-}
-
-.forgot-wave-bottom{
-  position:absolute;
-  z-index: 1;
-  bottom: 0;
-  filter: brightness(80%);
-}
-
-.register-img {
-  position: absolute;
-  right : 0;
-}
-
-.forgot-img {
-  right : 0px;
-  transform: scalex(-1);
 }
 
 .login {
@@ -165,70 +37,52 @@ a {
 .login > img {
   height: 290px;
   margin: 80px 40px auto 0;
-  z-index: 1;
 }
 
 form {
-  font-weight: 700;
   letter-spacing: 1px;
   min-height: 525px;
   max-width: 450px;
   width: 45vw;
-  z-index: 1;
 }
 
 form > img {
-  position:relative;
-  top:15px;
   width: 110px;
-  margin-bottom: 10px;
-}
-
-.register-title{
-  font-size: 33px;
-  text-transform: uppercase;
-  font-weight: 1000;
-  color: var(--secondary-color);
-  margin: 20px 0 15px 0;
 }
 
 .form-group {
-  transition: .5s;
   border-bottom: solid 1px var(--light-grey);
   position: relative;
   margin-bottom: 25px;
+  transition: border-color .4s ease;
   /* padding: 5px 0; */
-  font-size: 1rem;
-}
-
-.form-group:active {
-  border-color: var(--main-color);
 }
 
 .form-group > i {
   font-size: 13px;
   margin: 0 8px;
   color: var(--light-grey);
-  transition: .5s;
+  transition: color .4s ease;
 }
 
 .form-group p {
   position: absolute;
-  transform: translate(5px, -6px);
+  transform: translate(5px, 8px);
   text-transform: uppercase;
   color: var(--light-grey);
+  font-weight: 600;
+  transition: color .4s linear, transform .4s ease, font-size .4s ease;
 }
 
 .form-group input {
   position: relative;
   border: none;
-  padding: 8px 5px;
+  padding: 8px 5px; /* 5PX */
   background: none;
   width: 260px;
   color: var(--grey);
-  font-weight: 700;
-  font-family: 'Roboto', sans-serif !important;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: inherit;
   letter-spacing: 1px;
 }
 
@@ -236,50 +90,40 @@ form > img {
   outline: none;
 }
 
-form input[type='submit'] {
-  padding: 10px 50px;
-  font-weight: 700;
-  border: none;
-  border-radius: 20px;
-  color: white;
-  background-color: var(--main-color);
-  margin-top: 10px;
+.form-group:has(input:focus) {
+  animation: border-anim 1s ease forwards;
+  background-color: #8fa5ec;
 }
 
 .title {
   font-size: 33px;
   text-transform: uppercase;
-  font-weight: 1000;
+  font-weight: 800;
   color: var(--secondary-color);
-  margin: 20px 0 35px 0;
+  margin: 20px 0 30px 0;
 }
 
-.align-center {
-  align-items: center;
+.form-footer {
+  width: 290px;
+  font-size: 12px;
+  letter-spacing: 0;
+  margin-bottom: 25px;
 }
 
-.justify-center {
-  justify-content: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
-}
-
-.justify-start {
-  justify-content: flex-start;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
+form input[type='submit'] {
+  width: 290px;
+  padding: 10px 50px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  background-color: var(--main-color);
+  margin-top: 10px;
+  font-size: inherit;
 }
 
 @media (max-width: 1000px) {
-  .container-login > img {
+  .container > img {
     width: 55vw;
     height: 50vw;
   }
@@ -290,13 +134,13 @@ form input[type='submit'] {
 }
 
 @media (max-width: 815px) {
-  .container-login > img {
+  .container > img {
     display: none;
   }
   .login > img {
     display: none;
   }
-  .container-login {
+  .container {
     width: 450px;
   }
   .login {
@@ -308,6 +152,8 @@ form input[type='submit'] {
   }
 }
 
-
-
-
+@keyframes border-anim {
+  to {
+    border-color: var(--main-color);
+  }
+}
