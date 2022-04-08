@@ -1,20 +1,16 @@
 {% extends "base.html" %}
 
 {% block head %}
-<link rel="stylesheet" href="../static/css/login.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
 {% endblock head %}
 
 {% block body %}
 <div class="flex justify-center align-center body">
   <div class="container-login">
-    <img class="register-img"src="../static/images/flippedbg.png" alt="wave-backgroung">
+    <img class="register-img" src="../static/images/flippedbg.png" alt="wave-backgroung">
     <div class="login flex justify-start">
 
-        <form action="" class="flex flex-column justify-center align-center" method="post" novalidate>
+      <form action="" class="flex flex-column justify-center align-center" method="post" novalidate>
         {{ form.hidden_tag() }}
         <img src="../static/images/avatar.svg" alt="avatar">
         <h1 class="register-title">Welcome</h1>
@@ -25,12 +21,12 @@
             {{ form.username(class_="text-input login-text", id="username") }}
           </div>
         </div>
-        <div class ="form-group flex align-center email">
-            <i class='bx bx-mail-send bx-sm'></i>
-            <div class="email">
-                <P>{{ form.email.label }}</p>
-                {{ form.email(class_="text-input login-text", id="email") }}
-            </div>
+        <div class="form-group flex align-center email">
+          <i class='bx bx-mail-send bx-sm'></i>
+          <div class="email">
+            <P>{{ form.email.label }}</p>
+            {{ form.email(class_="text-input login-text", id="email") }}
+          </div>
         </div>
         <div class="form-group password flex align-center">
           <i class="fas fa-lock"></i>
@@ -40,18 +36,18 @@
           </div>
         </div>
         <div class="form-group confirm flex align-center">
-            <i class="fas fa-lock"></i>
-            <div class="confirm">
-              <p>{{ form.confirm.label }}</p>
-              {{ form.confirm(class_="text-input login-text", id="confirm") }}
-            </div>
+          <i class="fas fa-lock"></i>
+          <div class="confirm">
+            <p>{{ form.confirm.label }}</p>
+            {{ form.confirm(class_="text-input login-text", id="confirm") }}
           </div>
+        </div>
         <!-- <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p> -->
         <p>{{ form.submitReg(class_="text-input") }}</p>
         <!-- <p class="forgot" align="center"><a href="forgot.html">Forgot Password?</p> 
         <p class="forgot" align="center"><a href="signup.html">Make a New Account</p> -->
-        </form>
-        <img src="../static/images/registerguy.svg" alt="login-image">
+      </form>
+      <img src="../static/images/registerguy.svg" alt="login-image">
     </div>
   </div>
 </div>
