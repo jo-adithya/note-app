@@ -37,3 +37,7 @@
 .justify-space-around {
   justify-content: space-around;
 }
+
+.mt-2 {
+  margin-top: 2rem;
+}
