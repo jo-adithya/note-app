@@ -1,153 +1,116 @@
-<!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxs-notepad icon'></i>
-        <div class="logo_name">NoteApp</div>
-        <i class='bx bx-menu' id="btn" ></i>
-    </div>
-    <ul class="nav-list">
-      <li>
-        <a href="#" id="file">
-          <i class='bx bx-folder' ></i>
-          <span class="links_name">File Manager</span>
-        </a>
-        <span class="tooltip">Files</span>
-      </li>
-      <li>
-        <a href="#" id="create">
-          <i class='bx bx-plus bx-sm'></i>
-          <span class="links_name">Create</span>
-        </a>
-         <span class="tooltip">Create</span>
-      </li>
-      <li>
-       <a href="#" class="user">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">User</span>
-       </a>
-       <span class="tooltip">User</span>
-     </li>
-     <li class="profile">
-         <div class="profile-details">
-           <img src="../static/images/avatar.svg" alt="profileImg">
-           <div class="name_job">
-             <div class="name">Jonathan/Axel</div>
-             <div class="job">Students</div>
-           </div>
-         </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li>
-    </ul>
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="../static/css/index.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+{% endblock head %}
+
+{% block body %}
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxs-notepad icon'></i>
+    <div class="logo_name">NoteApp</div>
+    <i class='bx bx-menu' id="btn"></i>
   </div>
-  <div class="file-manager">
-  </div>>
-  <section class="home-section">
-      <div class="text">
-        NOTES
-        <hr>
-      </div>
-
-      <div class="searchbar">
-        <i class='bx bx-search-alt-2 bx-sm'></i>
-        <input class="input" type="text" placeholder="Search">
-      </div>
-
-      <div class="container">
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
-        </div>
-        <div class = "card"> 
-          <div class="datetime">DateTime</div>
-          <div class="title">TITLE</div>
-          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat perferendis ipsa iste adipisci laboriosam tempore.</div>
+  <ul class="nav-list">
+    <li>
+      <a href="#" id="file">
+        <i class='bx bx-folder'></i>
+        <span class="links_name">File Manager</span>
+      </a>
+      <span class="tooltip">Files</span>
+    </li>
+    <li>
+      <a href="#" id="create">
+        <i class='bx bx-plus bx-sm'></i>
+        <span class="links_name">Create</span>
+      </a>
+      <span class="tooltip">Create</span>
+    </li>
+    <li>
+      <a href="#" class="user">
+        <i class='bx bx-user'></i>
+        <span class="links_name">User</span>
+      </a>
+      <span class="tooltip">User</span>
+    </li>
+    <li class="profile">
+      <div class="profile-details">
+        <img src="../static/images/avatar.svg" alt="profileImg">
+        <div class="name_job">
+          <div class="name">Jonathan/Axel</div>
+          <div class="job">Students</div>
         </div>
       </div>
+      <a href="{{ url_for('logout') }}"><i class='bx bx-log-out' id="log_out"></i></a>
+    </li>
+  </ul>
+</div>
+<div class="file-manager">
+</div>
+<section class="home-section">
+  <div class="flex">
+    <div class="text">All Notes</div>
+    <div class="searchbar">
+      <i class='bx bx-search-alt-2 bx-sm'></i>
+      <input class="input" type="text" placeholder="Search">
+    </div>
+  </div>
 
-  </section>
-  <script>
-  let sidebar = document.querySelector(".sidebar");
-  let sideFile = document.querySelector(".file-manager");
-  let closeBtn = document.querySelector("#btn");
-  let file = document.querySelector("#file");
-  let create = document.querySelector("#create");
+  <div class="container">
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+    <div class="card">
+      <div class="datetime">DateTime</div>
+      <div class="title">TITLE</div>
+      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
+        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
+        perferendis ipsa iste adipisci laboriosam tempore.</div>
+    </div>
+  </div>
 
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    if(sideFile.classList.contains("open")){
-      sideFile.classList.toggle("open");
-    }
-    menuBtnChange();//calling the function(optional)
-  });
-
-  file.addEventListener("click", ()=>{
-    if(!sidebar.classList.contains("open")){
-      sidebar.classList.toggle("open");
-      sideFile.classList.toggle("open");
-    }
-    else{
-      sideFile.classList.toggle("open");
-    }
-    menuBtnChange();//calling the function(optional)
-  });
-
-  create.addEventListener("click", ()=>{
-    if(!sidebar.classList.contains("open")){
-      sidebar.classList.toggle("open");
-      sideFile.classList.toggle("open");
-    }
-    else{
-      sideFile.classList.toggle("open");
-    }
-    menuBtnChange();//calling the function(optional)
-  });
-
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-   if(sidebar.classList.contains("open")){
-     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-   }else {
-     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-   }
-  }
-  </script>
-</body>
-</html>
+</section>
+<script src="../static/js/index.js"></script>
+{% endblock body %}
