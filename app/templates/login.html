@@ -5,13 +5,13 @@
 {% endblock head %}
 
 {% block body %}
-<div class="flex justify-center align-center body">
+<div class="flex flex-column justify-center align-center body">
   <div class="container-login">
     <img class="login-img" src="../static/images/background.png" alt="wave-backgroung">
     <div class="login flex justify-end">
       <img src="../static/images/login.svg" alt="login-image">
 
-      <form action="" class="flex flex-column justify-center align-center" method="post" novalidate>
+      <form action="{{ url_for('login') }}" class="flex flex-column justify-center align-center" method="post" novalidate>
         {{ form.hidden_tag() }}
         <img src="../static/images/avatar.svg" alt="avatar">
         <h1 class="title">Welcome</h1>
@@ -31,9 +31,10 @@
             {{ form.password(class_="text-input login-text", id="password") }}
           </div>
         </div>
+
         <div class="form-footer flex justify-space-between">
           <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-          <a href="forgot.html">Forgot Password?</a>
+          <a href="{{ url_for('forget') }}">Forgot Password?</a>
         </div>
 
         <p>{{ form.submit() }}</p>
@@ -41,6 +42,8 @@
 
     </div>
   </div>
+  <p class="mt-2" style="font-size: 12px">Don't have an account? <a href="{{ url_for('register') }}">Register Here</a></p>
 </div>
+
 <script type="text/javascript" src="{{url_for('static', filename='js/login.js')}}"></script>
 {% endblock body %}
