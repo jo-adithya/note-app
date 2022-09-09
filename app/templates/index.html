@@ -60,49 +60,28 @@
   </div>
 
   <div class="container">
-    <div class="card">
+    <div class="card" data-name="preview1">
       <div class="datetime">DateTime</div>
       <div class="title">TITLE</div>
       <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
         similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
         perferendis ipsa iste adipisci laboriosam tempore.</div>
     </div>
-    <div class="card">
+    <div class="card" data-name="preview1">
       <div class="datetime">DateTime</div>
       <div class="title">TITLE</div>
       <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
         similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
         perferendis ipsa iste adipisci laboriosam tempore.</div>
     </div>
-    <div class="card">
+    <div class="card" data-name="preview1">
       <div class="datetime">DateTime</div>
       <div class="title">TITLE</div>
       <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
         similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
         perferendis ipsa iste adipisci laboriosam tempore.</div>
     </div>
-    <div class="card">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card">
+    <div class="card" data-name="preview1">
       <div class="datetime">DateTime</div>
       <div class="title">TITLE</div>
       <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
@@ -111,6 +90,17 @@
     </div>
   </div>
 
+  <div class="edit-container">
+    <div class="editor" data-target="preview1">
+      <div class="head">
+        <span class="datetime">Datetime</span>
+        <span class="close"><i class='bx bx-x'></i></span>
+      </div>
+      <input type="text" class="title" placeholder="Title" maxlength="20">
+      <hr>
+      <textarea name="content" class="content" id="" cols="30" rows="10" placeholder="type here . . . ."></textarea>
+    </div>
+  </div>
 </section>
 <script src="../static/js/index.js"></script>
 {% endblock body %}

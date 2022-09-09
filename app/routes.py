@@ -6,7 +6,7 @@ from app.forms import LoginForm, RegistrationForm
 from app.models import User
 
 
-@app.route('/forget')
+@app.route('/forget', methods=['GET', 'POST'])
 def forget():
     return render_template('forgot.html', title='Forgot Password')
 
@@ -42,13 +42,22 @@ def register():
         return redirect(url_for('index'))
 
     form = RegistrationForm()
+    user = User.query.filter_by(username=form.username.data).first()
+    userEmail = User.query.filter_by(email=form.email.data).first()
+
+    if user is not None or userEmail is not None:
+        flash('Username or Email already exist!')
+        return(redirect(url_for('register')))
+
     if form.validate_on_submit():
         # Add user to the database
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(password=form.password.data)
         db.session.add(user)
         db.session.commit()
+        flash("Registration Successful!")
         return redirect(url_for('login'))
+    
 
     return render_template('register.html', title='Register', form=form)
 
