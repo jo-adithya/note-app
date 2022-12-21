@@ -11,15 +11,15 @@
     <img class="forgot-wave-bottom" src="../static/images/wave.svg">
     <div class="login flex justify-center">
 
-      <form action="{{ url_for('reset_password') }}" method="post" class="flex flex-column justify-center align-center" method="post" novalidate>
+      <form action="" method="post" class="flex flex-column justify-center align-center" method="post" novalidate>
         {{ form.hidden_tag() }}
         <img src="../static/images/avatar.svg" alt="avatar">
         <h1 class="title">Don't Worry</h1>
         <div class="form-group flex align-center">
           <i class="fas fa-user-alt"></i>
-          <div class="login">
-            <p>{{ form.email.label }}</p>
-            {{ form.email(class_="text-input login-text", id="email") }}
+          <div class="password">
+            <p>{{ form.password.label }}</p>
+            {{ form.password(class_="text-input login-text", id="password") }}
           </div>
         </div>
         <p>{{ form.submit(class_="submit-button", value="Recover Password") }}</p>

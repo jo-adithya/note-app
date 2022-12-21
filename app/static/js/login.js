@@ -11,7 +11,7 @@ $('.form-group input').focus(function (e) {
   placeholder.css({
     fontSize: '0.7rem',
     color: mainColor,
-    transform: 'translate(5px, -10px)',
+    transform: 'translate(5px, -15px)',
   });
 });
 

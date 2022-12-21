@@ -20,8 +20,9 @@ a {
   max-height: 90vh;
   box-shadow: 5px 5px 30px var(--grey);
   border-radius: 20px;
-  overflow: auto;
+  overflow: hidden;
   transition: 0.3s;
+  position: relative;
 }
 
 .container-register {
@@ -149,6 +150,18 @@ form input[type='submit'] {
   background-color: var(--main-color);
   margin-top: 10px;
   font-size: inherit;
+}
+
+.forgot-wave-top {
+  position: relative;
+  top: -170px;
+  width: 100%!important;
+}
+
+.forgot-wave-bottom {
+  position: relative;
+  bottom: -170px;
+  width: 100%!important;
 }
 
 @media (max-width: 1000px) {

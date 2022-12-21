@@ -48,6 +48,11 @@
 .sidebar.open .logo-details #btn {
   text-align: right;
 }
+
+.sidebar ul{
+  padding-left: 0;
+}
+
 .sidebar i {
   color: #fff;
   height: 60px;
