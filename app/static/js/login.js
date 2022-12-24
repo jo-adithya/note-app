@@ -1,5 +1,5 @@
 const mainColor = '#536DFE';
-const grey = '#CCC';
+const grey = '#999';
 
 $('.form-group input').focus(function (e) {
   let group = $(this).parent().parent();
@@ -11,7 +11,7 @@ $('.form-group input').focus(function (e) {
   placeholder.css({
     fontSize: '0.7rem',
     color: mainColor,
-    transform: 'translate(5px, -15px)',
+    transform: 'translate(5px, -12px)',
   });
 });
 
@@ -24,7 +24,12 @@ $('.form-group input').blur(function (e) {
 
   let style = { color: grey };
   if (!$(this).val())
-    style = { ...style, fontSize: '1rem', transform: 'translate(5px, 8px)' };
+    style = { ...style, fontSize: 'inherit', transform: 'translate(5px, 8px)' };
 
   placeholder.css(style);
 });
+
+$('.alert > .btn-close').click((e) => {
+  let alert = $('.alert');
+  alert.fadeOut();
+})
