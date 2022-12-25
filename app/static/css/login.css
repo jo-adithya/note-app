@@ -1,9 +1,9 @@
-.body {
+.login-body {
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  font-size: 1rem;
+  background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
 }
 
 .alert{
@@ -12,33 +12,22 @@
 
 a {
   color: #8fa5ec;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .container-login {
   width: 1000px;
-  height: 530px;
   max-height: 90vh;
   box-shadow: 5px 5px 30px var(--grey);
   border-radius: 20px;
   overflow: hidden;
   transition: 0.3s;
   position: relative;
-}
-
-.container-register {
-  width: 1000px;
-  height: auto;
-  max-height: 90vh;
-  box-shadow: 5px 5px 30px var(--grey);
-  border-radius: 20px;
-  overflow: auto;
-  transition: 0.3s;
-  position: relative;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .container-login > img {
   position: absolute;
-  z-index: -1;
+  /* z-index: -1; */
   border-radius: 20px;
   width: 550px;
   height: 500px;
@@ -55,17 +44,18 @@ a {
 
 .login {
   width: 100%;
-  height: 100%;
+  height: max-content;
   transition: 0.5s;
+  padding: 1.5rem 0;
 }
 
 .login > img {
   height: 290px;
   margin: 80px 40px auto 0;
+  z-index: 1;
 }
 
 form {
-  letter-spacing: 1px;
   min-height: 525px;
   max-width: 450px;
   width: 45vw;
@@ -81,7 +71,7 @@ form > img {
 }
 
 .form-group {
-  border-bottom: solid 1px var(--light-grey);
+  border-bottom: solid 1px #888;
   position: relative;
   margin-bottom: 25px;
   transition: border-color .25s ease;
@@ -91,7 +81,7 @@ form > img {
 .form-group > i {
   font-size: 13px;
   margin: 0 8px;
-  color: var(--light-grey);
+  color: #888;
   transition: color .25s ease;
 }
 
@@ -99,8 +89,8 @@ form > img {
   position: absolute;
   transform: translate(5px, 8px);
   text-transform: uppercase;
-  color: var(--light-grey);
-  font-weight: 600;
+  color: #888;
+  font-weight: 500;
   transition: color .25s linear, transform .25s ease-out, font-size .25s ease-out;
 }
 
@@ -111,7 +101,7 @@ form > img {
   background: none;
   width: 260px;
   color: var(--grey);
-  font-weight: 600;
+  font-weight: 500;
   font-size: inherit;
   letter-spacing: 1px;
 }
@@ -126,18 +116,27 @@ form > img {
 }
 
 .title {
-  font-size: 33px;
+  font-size: 22px;
   text-transform: uppercase;
   font-weight: 800;
   color: var(--secondary-color);
   margin: 20px 0 30px 0;
 }
 
+.form-icon {
+  width: 15px;
+  height: 15px;
+  font-size: 15px !important;
+}
+
 .form-footer {
   width: 290px;
   font-size: 12px;
   letter-spacing: 0;
-  margin-bottom: 25px;
+}
+
+form {
+  height: max-content;
 }
 
 form input[type='submit'] {
@@ -162,6 +161,11 @@ form input[type='submit'] {
   position: relative;
   bottom: -170px;
   width: 100%!important;
+}
+
+.alert {
+  width: 98vw;
+  transform: translate(-50%, 1vw);
 }
 
 @media (max-width: 1000px) {
