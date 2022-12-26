@@ -1,0 +1,106 @@
+{% extends "index.html" %} {% block links %}
+<link rel="stylesheet" href="../static/css/note.css" />
+{% endblock links %} {% block scripts %}
+<script src="../static/js/note.js"></script>
+{% endblock scripts %} {% block section %}
+<div class="home-section">
+  <div class="text-editor">
+    <!-- Text Editor Formatter: Bold, Italic, Underline, Font size, e.t.c. -->
+    <div class="text-editor__formatter">
+      <!-- Undo/Redo -->
+      <button id="undo" class="btn-action">
+        <img src="../static/images/icons/undo.svg" alt="Undo" width="20" height="20">
+      </button>
+      <button id="redo" class="btn-action">
+        <img src="../static/images/icons/redo.svg" alt="Redo" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Fonts -->
+      <select id="font-family" class="btn-advance"></select>
+      <select id="font-size" class="btn-advance"></select>
+
+      <span class="vertical-split"></span>
+
+      <!-- Colors -->
+      <div class="input-wrapper">
+        <input type="color" id="foreColor" class="btn-advance" />
+      </div>
+      <div class="input-wrapper">
+        <input type="color" id="backColor" class="btn-advance" />
+      </div>
+
+      <span class="vertical-split"></span>
+
+      <!-- Text Format -->
+      <button id="bold" class="btn-action format">
+        <img src="../static/images/icons/bold.svg" alt="Bold" width="20" height="20">
+      </button>
+      <button id="italic" class="btn-action format">
+        <img src="../static/images/icons/italic.svg" alt="Italic" width="20" height="20">
+      </button>
+      <button id="underline" class="btn-action format">
+        <img src="../static/images/icons/underline.svg" alt="Underline" width="20" height="20">
+      </button>
+      <button id="strikethrough" class="btn-action format">
+        <img src="../static/images/icons/strikethrough.svg" alt="Strikethrough" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Scripts: Subscript & Superscript -->
+      <button id="superscript" class="btn-action script">
+        <img src="../static/images/icons/superscript.svg" alt="Superscript" width="20" height="20">
+      </button>
+      <button id="subscript" class="btn-action script">
+        <img src="../static/images/icons/subscript.svg" alt="Subscript" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Lists -->
+      <button id="insertUnorderedList" class="btn-action">
+        <img src="../static/images/icons/unordered.svg" alt="Unordered List" width="20" height="20">
+      </button>
+      <button id="insertOrderedList" class="btn-action">
+        <img src="../static/images/icons/ordered.svg" alt="Ordered List" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Allignments -->
+      <button id="justifyLeft" class="btn-action align">
+        <img src="../static/images/icons/align-left.svg" alt="Align Left" width="20" height="20">
+      </button>
+      <button id="justifyCenter" class="btn-action align">
+        <img src="../static/images/icons/align-center.svg" alt="Align Center" width="20" height="20">
+      </button>
+      <button id="justifyRight" class="btn-action align">
+        <img src="../static/images/icons/align-right.svg" alt="Align Right" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Indentations -->
+      <button id="indent" class="btn-action spacing">
+        <img src="../static/images/icons/indent.svg" alt="Indent" width="20" height="20">
+      </button>
+      <button id="outdent" class="btn-action spacing">
+        <img src="../static/images/icons/outdent.svg" alt="Outdent" width="20" height="20">
+      </button>
+
+      <span class="vertical-split"></span>
+
+      <!-- Links -->
+      <button id="createLink" class="btn-advance">
+        <img src="../static/images/icons/link.svg" alt="Insert Link" width="20" height="20">
+      </button>
+    </div>
+    <!-- End of Text Editor Formatter -->
+    <br>
+  </div>
+  <h1>{{ note.title }}</h1>
+  <p>{{ note.body }}</p>
+</div>
+{% endblock section %}
