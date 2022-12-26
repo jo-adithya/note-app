@@ -311,6 +311,16 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card > .content {
+  display: -webkit-box;
+  /* max-width: 200px; */
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .container .card:hover {
