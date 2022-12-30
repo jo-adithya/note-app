@@ -1,9 +1,9 @@
 {% extends "index.html" %} {% block links %}
 <link rel="stylesheet" href="../static/css/note.css" />
 {% endblock links %} {% block scripts %}
-<script src="../static/js/note.js"></script>
+<script type="module" src="../static/js/note.js"></script>
 {% endblock scripts %} {% block section %}
-<div class="home-section">
+<div class="main-content">
   <div class="text-editor">
     <!-- Text Editor Formatter: Bold, Italic, Underline, Font size, e.t.c. -->
     <div class="text-editor__formatter">
@@ -18,8 +18,12 @@
       <span class="vertical-split"></span>
 
       <!-- Fonts -->
-      <select id="font-family" class="btn-advance"></select>
-      <select id="font-size" class="btn-advance"></select>
+      <div class="custom-dropdown" style="width: 150px">
+        <select id="fontName" class="btn-advance"></select>
+      </div>
+      <div class="custom-dropdown" style="width: 50px">
+        <select id="fontSize" class="btn-advance"></select>
+      </div>
 
       <span class="vertical-split"></span>
 
@@ -98,9 +102,16 @@
       </button>
     </div>
     <!-- End of Text Editor Formatter -->
-    <br>
+    
+    <!-- Text Editor Title -->
+    <textarea placeholder="Title" rows="1" class="text-editor__title">{{ note.title }}</textarea>
+    <!-- End of Text Editor Title -->
+
+    <!-- Text Editor Body -->
+    <span class="text-editor__body" contenteditable data-placeholder="Start typing...">
+      {{ note.body }}
+    </span>
+    <!-- End of Text Editor Body -->
   </div>
-  <h1>{{ note.title }}</h1>
-  <p>{{ note.body }}</p>
 </div>
 {% endblock section %}
