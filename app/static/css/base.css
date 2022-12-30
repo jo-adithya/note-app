@@ -5,11 +5,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', 'Helvetica', sans-serif;
-  --main-color: #536dfe;
-  --secondary-color: #3e53c7;
-  --grey: #444;
-  --light-grey: #ccc;
+  --main-color: #3f7afd;
+  --secondary-color: #3f7afd;
+  --grey: #8e8f97;
+  --bg-light-grey: #f5f7fc;
 }
 
 /* Flex Box */
