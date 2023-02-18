@@ -8,52 +8,62 @@
 
   {% with messages = get_flashed_messages() %}  
     {% if messages %}  
-      {% for message in messages %} 
-      <div class="alert alert-danger" role="alert">
-        {{ message }}
+      <div class="position-absolute top-0 start-50 alert alert-danger flex align-center text-sm" role="alert">
+        {% if messages|length == 1 %}
+          <div class="w-100">
+            {{ messages[0] }}
+          </div>
+        {% else %}
+          <ul class="margin-0 w-100">
+            {% for message in messages %} 
+              <li>{{ message }}</li>
+            {% endfor %}  
+          </ul>
+        {% endif %}
+        <button type="button" class="btn-close float-end my-auto" aria-label="Close"></button>
       </div>      
-      {% endfor %}  
     {% endif %} 
   {% endwith %}  
 </div>
-<div class="flex flex-column justify-center align-center body">
+<div class="flex flex-column justify-center align-center login-body">
   <div class="container-login">
     <img class="login-img" src="../static/images/background.png" alt="wave-backgroung">
     <div class="login flex justify-end">
       <img src="../static/images/login.svg" alt="login-image">
 
-      <form action="{{ url_for('login') }}" class="flex flex-column justify-center align-center" method="post" novalidate>
+      <form action="{{ url_for('login') }}" class="flex flex-column justify-center align-center text-sm" method="post" novalidate>
         {{ form.hidden_tag() }}
         <img src="../static/images/avatar.svg" alt="avatar">
-        <h1 class="title">Welcome</h1>
+        <h1 class="title">Login</h1>
 
         <div class="form-group flex align-center">
-          <i class="fas fa-user-alt"></i>
+          <i class="fas fa-user-alt form-icon"></i>
           <div class="username">
-            <p>{{ form.username.label }}</p>
+            <p class="spacing-px">{{ form.username.label }}</p>
             {{ form.username(class_="text-input login-text", id="username") }}
           </div>
         </div>
 
         <div class="form-group password flex align-center">
-          <i class="fas fa-lock"></i>
+          <i class="fas fa-lock form-icon"></i>
           <div class="password">
-            <p>{{ form.password.label }}</p>
+            <p class="spacing-px">{{ form.password.label }}</p>
             {{ form.password(class_="text-input login-text", id="password") }}
           </div>
         </div>
 
         <div class="form-footer flex justify-space-between">
           <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-          <a href="{{ url_for('forget') }}">Forgot Password?</a>
+          <a style="color: #474bff" href="{{ url_for('forget') }}">Forgot Password?</a>
         </div>
 
         <p>{{ form.submit() }}</p>
+
+        <p class="mt-2 mb-0" style="font-size: 12px">Don't have an account? <a style="color: #474bff" href="{{ url_for('register') }}">Register Here</a></p>
       </form>
 
     </div>
   </div>
-  <p class="mt-2" style="font-size: 12px">Don't have an account? <a href="{{ url_for('register') }}">Register Here</a></p>
 </div>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/login.js')}}"></script>

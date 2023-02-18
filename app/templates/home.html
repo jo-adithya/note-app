@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block section %}
+<section class="main-content">
+  <div class="flex">
+    <div class="text">All Notes</div>
+    <div class="searchbar">
+      <i class='bx bx-search-alt-2 bx-sm'></i>
+      <input class="input" type="text" placeholder="Search">
+    </div>
+  </div>
+
+  <div class="container">
+    {% for note in notes %}
+    <a href="{{ url_for('note', id=note.id) }}" class="card" data-name="preview1">
+      <div class="datetime">{{ note.updatedAt }}</div>
+      <div class="title">{{ note.title }}</div>
+      <div class="content">{{ note.body }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock section %}

@@ -42,25 +42,25 @@ function menuBtnChange() {
 }
 
 //script buat open popup editor
-let editContainer = document.querySelector('.edit-container');
-let popUpBox = editContainer.querySelectorAll('.editor');
+// let editContainer = document.querySelector('.edit-container');
+// let popUpBox = editContainer.querySelectorAll('.editor');
 
-document.querySelectorAll('.container .card').forEach(card =>{
-  card.onclick = () =>{
-    editContainer.style.display = 'flex';
-    let name = card.getAttribute('data-name');
-    popUpBox.forEach(preview =>{
-      let target = preview.getAttribute('data-target');
-      if(name == target){
-        preview.classList.add('active');
-      }
-    });
-  };
-});
+// document.querySelectorAll('.container .card').forEach(card =>{
+//   card.onclick = () =>{
+//     editContainer.style.display = 'flex';
+//     let name = card.getAttribute('data-name');
+//     popUpBox.forEach(preview =>{
+//       let target = preview.getAttribute('data-target');
+//       if(name == target){
+//         preview.classList.add('active');
+//       }
+//     });
+//   };
+// });
 
-popUpBox.forEach(close =>{
-  close.querySelector('.close').onclick = () =>{
-    close.classList.remove('active');
-    editContainer.style.display = 'none';
-  };
-});
+// popUpBox.forEach(close =>{
+//   close.querySelector('.close').onclick = () =>{
+//     close.classList.remove('active');
+//     editContainer.style.display = 'none';
+//   };
+// });

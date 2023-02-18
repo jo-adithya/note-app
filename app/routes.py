@@ -3,7 +3,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, ForgotForm, ResetPasswordForm
-from app.models import User
+from app.models import User, Note
 import smtplib
 import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -58,7 +58,7 @@ def register():
 
     if user is not None or userEmail is not None:
         flash('Username or Email already exist!')
-        return(redirect(url_for('register')))
+        return redirect(url_for('register'))
 
     if form.validate_on_submit():
         # Add user to the database
@@ -76,7 +76,18 @@ def register():
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html', title='Notes')
+    notes = Note.query.all()
+    return render_template('home.html', title='All Notes', notes=notes)
+
+@app.route('/notes/<id>', methods=['GET', 'PATCH'])
+@login_required
+def note(id):
+    if request.method == 'GET':
+        note = Note.query.get(id)
+        if note is None:
+            return redirect(url_for('index'))
+        return render_template('note.html', title=note.title, note=note)
+    pass
 
 
 @app.route('/logout')

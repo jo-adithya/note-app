@@ -1,106 +1,69 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block head %}
-<link rel="stylesheet" href="../static/css/index.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-{% endblock head %}
+<link rel="stylesheet" href="../static/css/index.css" />
+<link
+  href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+{% block links %}{% endblock links %} 
+{% endblock head %} 
 
 {% block body %}
 <div class="sidebar">
   <div class="logo-details">
-    <i class='bx bxs-notepad icon'></i>
+    <i class="bx bxs-notepad icon"></i>
     <div class="logo_name">NoteApp</div>
-    <i class='bx bx-menu' id="btn"></i>
+    <!-- <i class='bx bx-menu' id="btn"></i> -->
   </div>
   <ul class="nav-list">
     <li>
-      <a href="#" id="file">
-        <i class='bx bx-folder'></i>
-        <span class="links_name">File Manager</span>
+      <a href="#" id="file" class="navlink">
+        <span href="#" class="navlink-icon">
+          <i class="bx bx-folder"></i>
+        </span>
+        <span class="navlink-name">File Manager</span>
       </a>
       <span class="tooltip">Files</span>
     </li>
     <li>
-      <a href="#" id="create">
-        <i class='bx bx-plus bx-sm'></i>
-        <span class="links_name">Create</span>
+      <a href="#" id="create" class="navlink">
+        <span href="#" class="navlink-icon">
+          <i class="bx bx-plus bx-sm"></i>
+        </span>
+        <span class="navlink-name">Create</span>
       </a>
       <span class="tooltip">Create</span>
     </li>
     <li>
-      <a href="#" class="user">
-        <i class='bx bx-user'></i>
-        <span class="links_name">User</span>
+      <a href="#" class="user navlink">
+        <span href="#" class="navlink-icon">
+          <i class="bx bx-user"></i>
+        </span>
+        <span class="navlink-name">User</span>
       </a>
       <span class="tooltip">User</span>
     </li>
     <li class="profile">
       <div class="profile-details">
-        <img src="../static/images/avatar.svg" alt="profileImg">
+        <img src="../static/images/avatar.svg" alt="profileImg" />
         <div class="name_job">
           <div class="name">Jonathan/Axel</div>
           <div class="job">Students</div>
         </div>
       </div>
-      <a href="{{ url_for('logout') }}"><i class='bx bx-log-out' id="log_out"></i></a>
+      <a href="{{ url_for('logout') }}"
+        ><i class="bx bx-log-out" id="log_out"></i
+      ></a>
     </li>
   </ul>
 </div>
-<div class="file-manager">
-</div>
-<section class="home-section">
-  <div class="flex">
-    <div class="text">All Notes</div>
-    <div class="searchbar">
-      <i class='bx bx-search-alt-2 bx-sm'></i>
-      <input class="input" type="text" placeholder="Search">
-    </div>
-  </div>
+<!-- <div class="file-manager"> -->
+{% block section %} {% endblock section %}
 
-  <div class="container">
-    <div class="card" data-name="preview1">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card" data-name="preview1">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card" data-name="preview1">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-    <div class="card" data-name="preview1">
-      <div class="datetime">DateTime</div>
-      <div class="title">TITLE</div>
-      <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe quia. Fugiat
-        similique, non voluptate asperiores temporibus praesentium. Nobis iusto, deserunt rem mollitia repellat
-        perferendis ipsa iste adipisci laboriosam tempore.</div>
-    </div>
-  </div>
-
-  <div class="edit-container">
-    <div class="editor" data-target="preview1">
-      <div class="head">
-        <span class="datetime">Datetime</span>
-        <span class="close"><i class='bx bx-x'></i></span>
-      </div>
-      <input type="text" class="title" placeholder="Title" maxlength="20">
-      <hr>
-      <textarea name="content" class="content" id="" cols="30" rows="10" placeholder="type here . . . ."></textarea>
-    </div>
-  </div>
-</section>
 <script src="../static/js/index.js"></script>
+{% block scripts %}{% endblock scripts %} 
+
 {% endblock body %}
