@@ -7,6 +7,9 @@ from app.models import User
 import smtplib
 import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 
 @app.route('/forget', methods=['GET', 'POST'])
@@ -87,9 +90,9 @@ def send_mail(user, form):
 
     smtp_port = 587
     smtp_server = "smtp.gmail.com"
-    email_form = "axelcornelius301@gmail.com"
+    email_from = "harvardbot@gmail.com"
     email_to = form.email.data
-    pswd = "rarudwgqpglflljn"
+    pswd = "qafqyvlfxoxgznws"
 
     subject = "Password Recovery"
     body = f"Hello,\n\nPlease find your password recovery link below.\n\n{url_for('reset_token', token=token,_external=True)}\n\nRegards,\nYour team"
@@ -98,8 +101,8 @@ def send_mail(user, form):
     simple_email_context = ssl.create_default_context()
     TIE_server = smtplib.SMTP(smtp_server, smtp_port)
     TIE_server.starttls(context=simple_email_context)
-    TIE_server.login(email_form, pswd)
-    TIE_server.sendmail(email_form, email_to, message)
+    TIE_server.login(email_from, pswd)
+    TIE_server.sendmail(email_from, email_to, message)
     TIE_server.quit()
 
 
