@@ -20,37 +20,35 @@
   </div>
   <ul class="nav-list">
     <li>
-      <a href="#" id="file" class="navlink">
+      <div href="#" id="file" class="navlink">
         <span href="#" class="navlink-icon">
           <i class="bx bx-folder"></i>
         </span>
         <span class="navlink-name">File Manager</span>
-      </a>
-      <span class="tooltip">Files</span>
+      </div>
     </li>
     <li>
-      <a href="#" id="create" class="navlink">
+      <div id="create" class="navlink" onclick="addNotes()">
         <span href="#" class="navlink-icon">
           <i class="bx bx-plus bx-sm"></i>
         </span>
         <span class="navlink-name">Create</span>
-      </a>
-      <span class="tooltip">Create</span>
+      </div>
     </li>
     <li>
-      <a href="#" class="user navlink">
+      <div href="#" class="user navlink">
         <span href="#" class="navlink-icon">
           <i class="bx bx-user"></i>
         </span>
         <span class="navlink-name">User</span>
-      </a>
-      <span class="tooltip">User</span>
+      </div>
     </li>
     <li class="profile">
       <div class="profile-details">
         <img src="../static/images/avatar.svg" alt="profileImg" />
         <div class="name_job">
-          <div class="name">Jonathan/Axel</div>
+          <!--div with current user's name-->
+          <div class="name">{{ user.username }}</div>
           <div class="job">Students</div>
         </div>
       </div>
@@ -63,7 +61,7 @@
 <!-- <div class="file-manager"> -->
 {% block section %} {% endblock section %}
 
-<script src="../static/js/index.js"></script>
-{% block scripts %}{% endblock scripts %} 
+
+{% block scripts %}<script src="../static/js/index.js"></script>{% endblock scripts %} 
 
 {% endblock body %}

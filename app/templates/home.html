@@ -13,6 +13,7 @@
   <div class="container">
     {% for note in notes %}
     <a href="{{ url_for('note', id=note.id) }}" class="card" data-name="preview1">
+      <i class='bx bx-x delete-btn' data-id="{{ note.id }}"></i>
       <div class="datetime">{{ note.updatedAt }}</div>
       <div class="title">{{ note.title }}</div>
       <div class="content">{{ note.body }}</div>

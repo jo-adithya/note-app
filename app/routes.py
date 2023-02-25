@@ -1,4 +1,4 @@
-from flask import request, flash, render_template, redirect, url_for
+from flask import request, flash, render_template, redirect, url_for, jsonify
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app, db
@@ -8,6 +8,7 @@ import smtplib
 import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
+from datetime import datetime
 load_dotenv()
 import os
 
@@ -76,8 +77,8 @@ def register():
 @app.route('/')
 @login_required
 def index():
-    notes = Note.query.all()
-    return render_template('home.html', title='All Notes', notes=notes)
+    notes = Note.query.filter_by(user_id=current_user.id).order_by(Note.updatedAt.desc()).all()
+    return render_template('home.html', title='All Notes', notes=notes, user=current_user)
 
 @app.route('/notes/<id>', methods=['GET', 'PATCH'])
 @login_required
@@ -86,7 +87,7 @@ def note(id):
         note = Note.query.get(id)
         if note is None:
             return redirect(url_for('index'))
-        return render_template('note.html', title=note.title, note=note)
+        return render_template('note.html', title=note.title, note=note, user=current_user)
     pass
 
 
@@ -101,9 +102,9 @@ def send_mail(user, form):
 
     smtp_port = 587
     smtp_server = "smtp.gmail.com"
-    email_from = "harvardbot@gmail.com"
+    email_from = os.getenv("EMAIL")
     email_to = form.email.data
-    pswd = "qafqyvlfxoxgznws"
+    pswd = os.getenv("PASSWORD")
 
     subject = "Password Recovery"
     body = f"Hello,\n\nPlease find your password recovery link below.\n\n{url_for('reset_token', token=token,_external=True)}\n\nRegards,\nYour team"
@@ -144,3 +145,34 @@ def reset_token(token):
         flash("password successfully changed", 'success')
         return redirect(url_for('login'))
     return render_template('reset_pass.html', title="change password", legend="change password", form=form)
+
+@app.route('/create', methods=['POST'])
+def insert_data():
+    try:
+        # Insert data into the database
+        now = datetime.now()
+        nextID = Note.query.count() + 1
+        note = Note(id=nextID, title=str(nextID), body="start typing", createdAt=now, updatedAt=now, user_id=current_user.id)
+        db.session.add(note)
+        db.session.commit()
+        
+        # Return a JSON response indicating success
+        response = {'status': 'success'}
+        return jsonify(response)
+    except Exception as e:
+        print('Error inserting data:', e)
+
+        response = {'status': 'error'}
+        return jsonify(response)
+
+@app.route('/delete', methods=['DELETE'])
+def delete_note():
+    note_id = request.args.get('id')
+    note = Note.query.get(note_id)
+
+    if note:
+        db.session.delete(note)
+        db.session.commit()
+        return jsonify({'success': True}), 200
+    else:
+        return jsonify({'success': False}), 404
