@@ -109,23 +109,16 @@ body {
 .sidebar:hover li .tooltip {
   display: none;
 }
-/* .sidebar input {
-  font-size: 15px;
+.sidebar li a{
+  text-decoration: none;
   color: #fff;
-  font-weight: 400;
-  outline: none;
-  height: 50px;
-  width: 100%;
-  width: 50px;
-  border: none;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  background: #1d1b31;
 }
-.sidebar:hover input {
-  padding: 0 20px 0 50px;
-  width: 100%;
-} */
+.sidebar li a:hover{
+  color: black;
+}
+.sidebar li a:hover i{
+  color: black;
+}
 .sidebar .bx-search {
   position: absolute;
   top: 50%;
@@ -184,7 +177,8 @@ body {
   transform: translateX(78px);
   width: calc(100% - 78px);
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 1;
+  padding-left: 20px;
 }
 .main-content .text {
   display: inline-block;
@@ -231,6 +225,7 @@ body {
   width: 40%;
   background-color: #eff1f5;
   margin: auto;
+  margin-right: 15px;
   border-radius: 50px;
   height: 40px;
   padding: 10px 10px;
@@ -253,13 +248,14 @@ body {
   display: flex;
   margin-top: 15px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 20px;
+  justify-content: start;
+  max-width: none!important;
 }
 
 .container .card {
   background-color: #eff1f5;
   height: 310px;
-  min-width: 300px;
   width: 31%;
   border-radius: 20px;
   margin: 15px 0;
@@ -270,6 +266,7 @@ body {
   text-decoration: none;
   color: inherit;
   z-index: 1;
+  width: 350px;
 }
 
 .card > .content {
@@ -448,6 +445,118 @@ body {
 .container .delete-btn:hover{
   font-size: 35px;
   transition: all 0.2s ease-in-out;
+}
+
+.user-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-left: 20px;
+}
+.user-container .user-details{
+  width: 90%;
+  height: auto;
+  padding: 30px;
+  background: linear-gradient(156.8deg, rgb(1, 17, 70) 27.1%, rgb(0, 2, 10) 77.8%);
+  border-radius: 50px;
+  color: white;
+}
+
+.user-container .user-details .detail-header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-size: 1.5rem;
+  padding: 20px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.detail-header .user-name{
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.user-container .user-details .detail-subheader{
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  flex-wrap: nowrap;
+  font-size: 1.2rem;
+  padding: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.user-details .account-form{
+  padding-top: 20px;
+}
+
+.user-details .form-group{
+  width: 100%;
+  font-size: 20px;
+  padding: 10px
+}
+
+.form-group i{
+  font-size: 20px;
+}
+
+.form-group p{
+  margin-bottom: 0px;
+}
+
+.form-group .form-label{
+  padding-left: 10px;
+}
+
+.form-group .form-field{
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #afb0b1;
+  margin-top: 5px;
+}
+
+.form-group .text-input{
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #eff1f5;
+  margin-top: 5px;
+}
+
+.form-group .half-field input{
+  width: 100%;
+}
+
+.user-container .user-details img{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.account-form .submit-form{
+  width: 290px;
+  padding: 10px 50px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  background: linear-gradient(156.8deg, rgb(2, 103, 185) 27.1%, rgb(45, 142, 233) 77.8%);
+  margin-top: 10px;
+  font-size: inherit;
+}
+
+.account-form .text-danger{
+  display: none;
 }
 
 @media (min-width: 1240px) {

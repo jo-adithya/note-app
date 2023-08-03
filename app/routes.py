@@ -2,7 +2,7 @@ from flask import request, flash, render_template, redirect, url_for, jsonify
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ForgotForm, ResetPasswordForm
+from app.forms import LoginForm, RegistrationForm, ForgotForm, ResetPasswordForm, AccountForm
 from app.models import User, Note
 import smtplib
 import ssl
@@ -13,8 +13,8 @@ load_dotenv()
 import os
 
 
-@app.route('/forget', methods=['GET', 'POST'])
-def forget():
+@app.route('/forgot', methods=['GET', 'POST'])
+def forgot():
     form = ForgotForm()
     try:
         return render_template('forgot.html', title='Forgot Password', form=form)
@@ -88,6 +88,21 @@ def note(id):
         if note is None:
             return redirect(url_for('index'))
         return render_template('note.html', title=note.title, note=note, user=current_user)
+    if request.method == 'PATCH':
+        note = Note.query.get(id)
+        if note is None:
+            return jsonify({'message': 'Note not found'}), 404
+
+        data = request.get_json()
+        title = data.get('title')
+        body = data.get('body')
+
+        # Perform the update in the database
+        note.title = title
+        note.body = body
+        db.session.commit()
+
+        return jsonify({'message': 'Note updated successfully'}), 200
     pass
 
 
@@ -138,6 +153,11 @@ def reset_token(token):
         return redirect(url_for('reset_password'))
     
     form = ResetPasswordForm()
+
+    if form.password.data != form.confirmPass.data:
+        flash('passwords do not match', 'warning')
+        return redirect(url_for('reset_token', token=token))
+
     if form.validate_on_submit():
         userdb = User.query.filter_by(id=user).first()
         userdb.set_password(form.password.data)
@@ -176,3 +196,26 @@ def delete_note():
         return jsonify({'success': True}), 200
     else:
         return jsonify({'success': False}), 404
+
+
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+    form = AccountForm()
+    if(request.method == 'GET'):
+        return render_template('user.html', user=current_user, form=form)   
+    
+    if(request.method == 'POST'):
+        password = form.changePass.data
+        confirm_password = form.confirmChangePass.data
+
+        if password != confirm_password:
+            flash('Passwords do not match', 'warning')
+            return redirect(url_for('user'))
+        else:
+            userDB = User.query.filter_by(id=current_user.id).first()
+            userDB.set_password(password)
+            db.session.commit()
+            flash('Password changed successfully', 'success')
+            return redirect(url_for('user'))          
+        
+            

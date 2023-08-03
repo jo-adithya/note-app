@@ -5,7 +5,25 @@
 {% endblock head %}
 
 {% block body %}
-<div class="flex justify-center align-center body">
+  {% with messages = get_flashed_messages() %}  
+    {% if messages %}  
+      <div class="position-absolute top-0 start-50 alert alert-danger flex align-center text-sm" role="alert">
+        {% if messages|length == 1 %}
+          <div class="w-100">
+            {{ messages[0] }}
+          </div>
+        {% else %}
+          <ul class="margin-0 w-100">
+            {% for message in messages %} 
+              <li>{{ message }}</li>
+            {% endfor %}  
+          </ul>
+        {% endif %}
+        <button type="button" class="btn-close float-end my-auto" aria-label="Close"></button>
+      </div>      
+    {% endif %} 
+  {% endwith %} 
+<div class="flex flex-column justify-center align-center login-body">
   <div class="container-login">
     <img class="forgot-wave-top" src="../static/images/wavetop.svg">
     <img class="forgot-wave-bottom" src="../static/images/wave.svg">
@@ -16,13 +34,20 @@
         <img src="../static/images/avatar.svg" alt="avatar">
         <h1 class="title">Don't Worry</h1>
         <div class="form-group flex align-center">
-          <i class="fas fa-user-alt"></i>
-          <div class="password">
+          <i class="fas fa-lock form-icon"></i>
+          <div class="spacing-px">
             <p>{{ form.password.label }}</p>
             {{ form.password(class_="text-input login-text", id="password") }}
           </div>
         </div>
-        <p>{{ form.submit(class_="submit-button", value="Recover Password") }}</p>
+        <div class="form-group flex align-center">
+          <i class="fas fa-lock form-icon"></i>
+          <div class="spacing-px">
+            <p>{{ form.confirmPass.label }}</p>
+            {{ form.confirmPass(class_="text-input login-text", id="confirmPass") }}
+          </div>
+        </div>
+        <p>{{ form.submit(class_="submit-button", value="Change Password") }}</p>
         {#
         <!-- <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p> -->
         <!-- <p>{{ form.forgot(class_="text-input") }}</p> -->

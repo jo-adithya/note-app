@@ -1,7 +1,8 @@
 {% extends "index.html" %} {% block links %}
 <link rel="stylesheet" href="../static/css/note.css" />
 {% endblock links %} {% block scripts %}
-<script type="module" src="../static/js/note.js"></script>
+<!-- <script type="module" src="../static/js/note.js"></script> -->
+<script src="../static/js/note.js"></script>
 {% endblock scripts %} {% block section %}
 <div class="main-content">
   <div class="text-editor">
@@ -100,18 +101,24 @@
       <button id="createLink" class="btn-advance">
         <img src="../static/images/icons/link.svg" alt="Insert Link" width="20" height="20">
       </button>
+
+      <!--Save-->
+      <button id="save" class="btn-advance" onclick="save('{{ note.id }}')">
+        <i class="fa fa-check"></i>
+      </button>
     </div>
     <!-- End of Text Editor Formatter -->
     
     <!-- Text Editor Title -->
-    <textarea placeholder="Title" rows="1" class="text-editor__title">{{ note.title }}</textarea>
+    <textarea placeholder="Title" rows="1" class="text-editor__title" id="titleInput">{{ note.title }}</textarea>
     <!-- End of Text Editor Title -->
 
     <!-- Text Editor Body -->
-    <span class="text-editor__body" contenteditable data-placeholder="Start typing...">
+    <span class="text-editor__body" contenteditable data-placeholder="Start typing..." id="bodyInput">
       {{ note.body }}
     </span>
     <!-- End of Text Editor Body -->
   </div>
 </div>
 {% endblock section %}
+

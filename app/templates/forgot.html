@@ -5,7 +5,7 @@
 {% endblock head %}
 
 {% block body %}
-<div class="flex justify-center align-center body">
+<div class="flex flex-column justify-center align-center login-body">
   <div class="container-login">
     <img class="forgot-wave-top" src="../static/images/wavetop.svg">
     <img class="forgot-wave-bottom" src="../static/images/wave.svg">
@@ -17,7 +17,7 @@
         <h1 class="title">Don't Worry</h1>
         <div class="form-group flex align-center">
           <i class="fas fa-user-alt"></i>
-          <div class="login">
+          <div class="spacing-px">
             <p>{{ form.email.label }}</p>
             {{ form.email(class_="text-input login-text", id="email") }}
           </div>

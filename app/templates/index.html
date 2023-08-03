@@ -20,11 +20,11 @@
   </div>
   <ul class="nav-list">
     <li>
-      <div href="#" id="file" class="navlink">
+      <div href="#" id="file" class="navlink" onclick="redirectHome()">
         <span href="#" class="navlink-icon">
           <i class="bx bx-folder"></i>
         </span>
-        <span class="navlink-name">File Manager</span>
+        <span class="navlink-name">Dasboard</span>
       </div>
     </li>
     <li>
@@ -36,12 +36,14 @@
       </div>
     </li>
     <li>
-      <div href="#" class="user navlink">
-        <span href="#" class="navlink-icon">
-          <i class="bx bx-user"></i>
-        </span>
-        <span class="navlink-name">User</span>
-      </div>
+      <a href="{{ url_for('user') }}">
+        <div href="#" class="user navlink">
+          <span href="#" class="navlink-icon">
+            <i class="bx bx-user"></i>
+          </span>
+          <span class="navlink-name">User</span>
+        </div>
+      </a>
     </li>
     <li class="profile">
       <div class="profile-details">
@@ -49,7 +51,6 @@
         <div class="name_job">
           <!--div with current user's name-->
           <div class="name">{{ user.username }}</div>
-          <div class="job">Students</div>
         </div>
       </div>
       <a href="{{ url_for('logout') }}"
