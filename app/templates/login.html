@@ -24,7 +24,7 @@
       </div>      
     {% endif %} 
   {% endwith %}  
-</div>
+  
 <div class="flex flex-column justify-center align-center login-body">
   <div class="container-login">
     <img class="login-img" src="../static/images/background.png" alt="wave-backgroung">
@@ -54,7 +54,7 @@
 
         <div class="form-footer flex justify-space-between">
           <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-          <a style="color: #474bff" href="{{ url_for('forget') }}">Forgot Password?</a>
+          <a style="color: #474bff" href="{{ url_for('forgot') }}">Forgot Password?</a>
         </div>
 
         <p>{{ form.submit() }}</p>

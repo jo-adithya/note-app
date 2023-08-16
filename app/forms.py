@@ -33,6 +33,16 @@ class ForgotForm(FlaskForm):
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
+    confirmPass = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Change Password')
+
+class AccountForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    changePass = PasswordField('New Password', validators=[DataRequired()])
+    confirmChangePass = PasswordField('Confirm New Password', validators=[DataRequired()])
+    submit = SubmitField('Change Password')
+
+    
 
 
