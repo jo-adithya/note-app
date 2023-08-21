@@ -9,6 +9,7 @@ import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 from datetime import datetime
+from random import randint
 load_dotenv()
 import os
 
@@ -170,9 +171,8 @@ def reset_token(token):
 def insert_data():
     try:
         # Insert data into the database
-        now = datetime.now()
-        nextID = Note.query.count() + 1
-        note = Note(id=nextID, title=str(nextID), body="start typing", createdAt=now, updatedAt=now, user_id=current_user.id)
+        id = randint(0, 99999999)
+        note = Note(id=id, title=str(id), body="start typing", user_id=current_user.id)
         db.session.add(note)
         db.session.commit()
         

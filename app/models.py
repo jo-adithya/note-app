@@ -3,7 +3,7 @@ from flask_login import UserMixin
 from datetime import datetime
 from app import db, login, app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
+import uuid
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -36,8 +36,8 @@ class User(UserMixin, db.Model):
 
 
 class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), index=True, unique=True)
+    id = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()), unique=True, nullable=False)
+    title = db.Column(db.String(100), index=True)
     body = db.Column(db.Text)
     createdAt = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime, index=True, default=datetime.utcnow)
