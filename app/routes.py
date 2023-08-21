@@ -1,16 +1,20 @@
-from flask import request, flash, render_template, redirect, url_for
+from flask import request, flash, render_template, redirect, url_for, jsonify
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ForgotForm, ResetPasswordForm
+from app.forms import LoginForm, RegistrationForm, ForgotForm, ResetPasswordForm, AccountForm
 from app.models import User, Note
 import smtplib
 import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+from datetime import datetime
+load_dotenv()
+import os
 
 
-@app.route('/forget', methods=['GET', 'POST'])
-def forget():
+@app.route('/forgot', methods=['GET', 'POST'])
+def forgot():
     form = ForgotForm()
     try:
         return render_template('forgot.html', title='Forgot Password', form=form)
@@ -73,8 +77,8 @@ def register():
 @app.route('/')
 @login_required
 def index():
-    notes = Note.query.all()
-    return render_template('home.html', title='All Notes', notes=notes)
+    notes = Note.query.filter_by(user_id=current_user.id).order_by(Note.updatedAt.desc()).all()
+    return render_template('home.html', title='All Notes', notes=notes, user=current_user)
 
 @app.route('/notes/<id>', methods=['GET', 'PATCH'])
 @login_required
@@ -83,7 +87,22 @@ def note(id):
         note = Note.query.get(id)
         if note is None:
             return redirect(url_for('index'))
-        return render_template('note.html', title=note.title, note=note)
+        return render_template('note.html', title=note.title, note=note, user=current_user)
+    if request.method == 'PATCH':
+        note = Note.query.get(id)
+        if note is None:
+            return jsonify({'message': 'Note not found'}), 404
+
+        data = request.get_json()
+        title = data.get('title')
+        body = data.get('body')
+
+        # Perform the update in the database
+        note.title = title
+        note.body = body
+        db.session.commit()
+
+        return jsonify({'message': 'Note updated successfully'}), 200
     pass
 
 
@@ -98,9 +117,9 @@ def send_mail(user, form):
 
     smtp_port = 587
     smtp_server = "smtp.gmail.com"
-    email_form = "axelcornelius301@gmail.com"
+    email_from = os.getenv("EMAIL")
     email_to = form.email.data
-    pswd = "rarudwgqpglflljn"
+    pswd = os.getenv("PASSWORD")
 
     subject = "Password Recovery"
     body = f"Hello,\n\nPlease find your password recovery link below.\n\n{url_for('reset_token', token=token,_external=True)}\n\nRegards,\nYour team"
@@ -109,8 +128,8 @@ def send_mail(user, form):
     simple_email_context = ssl.create_default_context()
     TIE_server = smtplib.SMTP(smtp_server, smtp_port)
     TIE_server.starttls(context=simple_email_context)
-    TIE_server.login(email_form, pswd)
-    TIE_server.sendmail(email_form, email_to, message)
+    TIE_server.login(email_from, pswd)
+    TIE_server.sendmail(email_from, email_to, message)
     TIE_server.quit()
 
 
@@ -134,6 +153,11 @@ def reset_token(token):
         return redirect(url_for('reset_password'))
     
     form = ResetPasswordForm()
+
+    if form.password.data != form.confirmPass.data:
+        flash('passwords do not match', 'warning')
+        return redirect(url_for('reset_token', token=token))
+
     if form.validate_on_submit():
         userdb = User.query.filter_by(id=user).first()
         userdb.set_password(form.password.data)
@@ -141,3 +165,57 @@ def reset_token(token):
         flash("password successfully changed", 'success')
         return redirect(url_for('login'))
     return render_template('reset_pass.html', title="change password", legend="change password", form=form)
+
+@app.route('/create', methods=['POST'])
+def insert_data():
+    try:
+        # Insert data into the database
+        now = datetime.now()
+        nextID = Note.query.count() + 1
+        note = Note(id=nextID, title=str(nextID), body="start typing", createdAt=now, updatedAt=now, user_id=current_user.id)
+        db.session.add(note)
+        db.session.commit()
+        
+        # Return a JSON response indicating success
+        response = {'status': 'success'}
+        return jsonify(response)
+    except Exception as e:
+        print('Error inserting data:', e)
+
+        response = {'status': 'error'}
+        return jsonify(response)
+
+@app.route('/delete', methods=['DELETE'])
+def delete_note():
+    note_id = request.args.get('id')
+    note = Note.query.get(note_id)
+
+    if note:
+        db.session.delete(note)
+        db.session.commit()
+        return jsonify({'success': True}), 200
+    else:
+        return jsonify({'success': False}), 404
+
+
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+    form = AccountForm()
+    if(request.method == 'GET'):
+        return render_template('user.html', user=current_user, form=form)   
+    
+    if(request.method == 'POST'):
+        password = form.changePass.data
+        confirm_password = form.confirmChangePass.data
+
+        if password != confirm_password:
+            flash('Passwords do not match', 'warning')
+            return redirect(url_for('user'))
+        else:
+            userDB = User.query.filter_by(id=current_user.id).first()
+            userDB.set_password(password)
+            db.session.commit()
+            flash('Password changed successfully', 'success')
+            return redirect(url_for('user'))          
+        
+            

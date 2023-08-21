@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+
+{% block section %}
+<section class="main-content">
+  <div class="flex">
+    <div class="text">Account</div>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {% if category == 'success' %}
+          <div class="position-absolute top-0 start-50 alert alert-success flex align-center text-sm" role="alert">
+        {% elif category == 'error' %}
+          <div class="position-absolute top-0 start-50 alert alert-danger flex align-center text-sm" role="alert">
+        {% elif category == 'warning' %}
+          <div class="position-absolute top-0 start-50 alert alert-warning flex align-center text-sm" role="alert">
+        {% else %}
+          <div class="position-absolute top-0 start-50 alert alert-info flex align-center text-sm" role="alert">
+        {% endif %}
+        
+        {% if messages|length == 1 %}
+          <div class="w-100">
+            {{ message }}
+          </div>
+        {% else %}
+          <ul class="margin-0 w-100">
+            <li>{{ message }}</li>
+          </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <div class="user-container">
+    <div class="user-details">
+        <div class="detail-header">
+            <img src="../static/images/avatar.svg" alt="user-avatar">
+            <div class="user-name">{{ user.username }}</div>
+        </div>        
+        <form action="{{ url_for('user') }}" method="post" class="account-form" id="accountFrom">
+            <div class="flex">
+                <div class="form-group align-center">
+                    <div class="flex align-center">
+                        <i class="fas fa-user-alt form-icon"></i>
+                        <p class="form-label">{{ form.username.label }}</p>
+                    </div>
+                    <div class="form-field">
+                      {{user.username}}
+                    </div>
+                </div>
+                <div class="form-group align-center">
+                    <div class="flex align-center">
+                        <i class="fa fa-envelope form-icon"></i>
+                        <p class="form-label">{{ form.email.label }}</p>
+                    </div>
+                    <div class="form-field">
+                      {{user.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="detail-subheader">Change Password</div>
+            <div class="flex">
+                <div class="form-group align-center">
+                    <div class="flex align-center">
+                        <i class="fas fa-lock form-icon"></i>
+                        <p class="form-label">{{ form.changePass.label }}</p>
+                    </div>
+                    {{ form.changePass(class_="text-input", id="changePass") }}
+                </div>
+                <div class="form-group align-center">
+                    <div class="flex align-center">
+                        <i class="fas fa-lock form-icon"></i>
+                        <p class="form-label">{{ form.confirmChangePass.label }}</p>
+                    </div>
+                    {{ form.confirmChangePass(class_="text-input", id="confirmChangePass") }}
+                </div>
+            </div>
+            <div style="text-align: right; padding-top: 10px;">{{ form.submit(class_="submit-form", id="submit") }}</div>
+        </form>
+    </div>
+  </div>
+</section>
+{% endblock section %}

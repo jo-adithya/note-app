@@ -37,3 +37,38 @@ advanceButtons.forEach((button) => {
     document.execCommand(button.id, false, button.value);
   });
 });
+
+function save(noteID){
+  const title = document.getElementById(`titleInput`).value;
+  const body = document.getElementById(`bodyInput`).innerText;
+
+  const data = {
+    title: title,
+    body: body
+  }
+
+  fetch('/notes/' + noteID, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    ,
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if(response.ok){
+      console.log('Note saved')
+      window.location.href = '/';
+    }
+    else{
+      console.log('Error')
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+function redirectHome(){
+  window.location.href = '/';
+}
