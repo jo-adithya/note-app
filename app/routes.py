@@ -172,7 +172,7 @@ def insert_data():
     try:
         # Insert data into the database
         id = randint(0, 99999999)
-        note = Note(id=id, title=str(id), body="start typing", user_id=current_user.id)
+        note = Note(id=id, title="Notes", body="start typing", user_id=current_user.id)
         db.session.add(note)
         db.session.commit()
         

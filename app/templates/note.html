@@ -1,7 +1,8 @@
 {% extends "index.html" %} {% block links %}
 <link rel="stylesheet" href="../static/css/note.css" />
 {% endblock links %} {% block scripts %}
-<script type="module" src="../static/js/note.js"></script>
+<!-- <script type="module" src="../static/js/note.js"></script> -->
+<script type="text/javascript" src="../static/js/note.js"></script>
 <script>
   function save(noteID){
     const title = document.getElementById(`titleInput`).value;

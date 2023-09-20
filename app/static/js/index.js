@@ -63,3 +63,19 @@ deleteNotes.forEach(button => {
 function redirectHome(){
   window.location.href = '/';
 }
+
+const searchInput = document.querySelector('.input');
+const cards = document.querySelectorAll('.card');
+
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  cards.forEach(card => {
+    const title = card.querySelector('.title').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
